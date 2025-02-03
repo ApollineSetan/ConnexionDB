@@ -26,6 +26,24 @@
         margin-bottom: 10px;
     }
 
+    .message {
+        font-size: 12px;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    .error {
+        color: red;
+        border: 1px solid red;
+        background-color: #f8d7da;
+    }
+
+    .success {
+        color: green;
+        border: 1px solid green;
+        background-color: #d4edda;
+    }
+
 </style>
 
 <!-- Affichage du formulaire de création de compte -->
@@ -47,8 +65,13 @@
         <input type="submit" name="submit" value="Créer le compte">
     </form>
 
-    <!-- Affichage du message (erreur ou succès) -->
-    <p> <?= isset($message) ? htmlspecialchars($message) : ''; ?></p><br>
+    <!-- Affichage du message d'erreur ou de succès uniquement si un message existe -->
+    <?php if (!empty($message)) : ?>
+        <p class="message <?= strpos($message, 'Erreur') !== false ? 'error' : 'success'; ?>">
+            <?= htmlspecialchars($message); ?>
+        </p>
+    <?php endif; ?>
+
     
 </section>
 
