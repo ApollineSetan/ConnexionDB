@@ -1,4 +1,4 @@
--task- Création de la base de données
+--task- Création de la base de données
 CREATE DATABASE task CHARSET utf8mb4;
 USE task;
 

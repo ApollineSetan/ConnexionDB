@@ -1,5 +1,9 @@
 <?php
 
+/*
+- Le fichier account.php dans le dossier model contient uniquement la logique de la base de données (ajout, récupération des comptes etc.)
+*/
+
 /**
  * @method ajouter un compte en BDD
  * @param PDO $bdd
@@ -59,13 +63,14 @@ function deleteAccount(PDO $bdd, string $email): void {
         echo "Erreur : " . $e->getMessage();
     }
 }
+
 /**
  * @method afficher un compte depuis son email
  * @param PDO $bdd
  * @param string $email
  * @return ?array acount [id, firstname, lastname, email]
  */
-function getAccountByEmail(PDO $bdd, string $email): ?array {
+function getAccountByEmail(PDO $bdd, string $email): null|array|string {
     try {
         $requete = "SELECT id_account, firstname, lastname, email FROM account
         WHERE email = ?";
